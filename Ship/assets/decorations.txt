@@ -1,0 +1,249 @@
+decorations.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tree/Tree_Jungle
+  rotate: false
+  xy: 0, 1245
+  size: 128, 160
+  orig: 128, 160
+  offset: 0, 0
+  index: -1
+tree/Tree_Hot
+  rotate: false
+  xy: 0, 1085
+  size: 120, 151
+  orig: 120, 151
+  offset: 0, 0
+  index: -1
+flowers/3
+  rotate: false
+  xy: 173, 960
+  size: 32, 30
+  orig: 32, 30
+  offset: 0, 0
+  index: -1
+flowers/7
+  rotate: false
+  xy: 63, 1021
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+tree/Tree_Mild_Bare_three
+  rotate: false
+  xy: 123, 1564
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+tree/Tree_Mild_two
+  rotate: false
+  xy: 0, 1881
+  size: 185, 160
+  orig: 185, 160
+  offset: 0, 0
+  index: -1
+tree/Tree_Mild_Bare_two
+  rotate: false
+  xy: 0, 1724
+  size: 190, 157
+  orig: 190, 157
+  offset: 0, 0
+  index: -1
+tree/Tree_Mild_Bare
+  rotate: false
+  xy: 0, 1564
+  size: 123, 160
+  orig: 123, 160
+  offset: 0, 0
+  index: -1
+sbushes/jungle_four
+  rotate: false
+  xy: 0, 1053
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+bushes/3
+  rotate: false
+  xy: 0, 960
+  size: 57, 61
+  orig: 57, 61
+  offset: 0, 0
+  index: -1
+Tile_Local
+  rotate: false
+  xy: 0, 0
+  size: 128, 960
+  orig: 128, 960
+  offset: 0, 0
+  index: -1
+sbushes/jungle_three
+  rotate: false
+  xy: 32, 1053
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+flowers/2
+  rotate: false
+  xy: 151, 960
+  size: 22, 19
+  orig: 22, 19
+  offset: 0, 0
+  index: -1
+flowers/6
+  rotate: false
+  xy: 32, 1021
+  size: 31, 21
+  orig: 31, 21
+  offset: 0, 0
+  index: -1
+sbushes/hot
+  rotate: false
+  xy: 181, 1021
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+rocks/1
+  rotate: false
+  xy: 93, 1021
+  size: 27, 29
+  orig: 27, 29
+  offset: 0, 0
+  index: -1
+sbushes/mild_three
+  rotate: false
+  xy: 158, 1053
+  size: 31, 29
+  orig: 31, 29
+  offset: 0, 0
+  index: -1
+bushes/2
+  rotate: false
+  xy: 155, 0
+  size: 61, 56
+  orig: 61, 56
+  offset: 0, 0
+  index: -1
+flowers/1
+  rotate: false
+  xy: 121, 960
+  size: 30, 32
+  orig: 30, 32
+  offset: 0, 0
+  index: -1
+tree/Tree_Mild
+  rotate: false
+  xy: 118, 1405
+  size: 125, 159
+  orig: 125, 159
+  offset: 0, 0
+  index: -1
+flowers/5
+  rotate: false
+  xy: 0, 1021
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+sbushes/mild
+  rotate: false
+  xy: 96, 1053
+  size: 30, 26
+  orig: 30, 26
+  offset: 0, 0
+  index: -1
+tree/Tree_Jungle_two
+  rotate: false
+  xy: 0, 1405
+  size: 118, 156
+  orig: 118, 156
+  offset: 0, 0
+  index: -1
+extras/bones
+  rotate: false
+  xy: 57, 960
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+tree/Tree_Hot_Bare
+  rotate: false
+  xy: 120, 1085
+  size: 61, 160
+  orig: 61, 160
+  offset: 0, 0
+  index: -1
+sbushes/mild_two
+  rotate: false
+  xy: 189, 1053
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+rocks/2
+  rotate: false
+  xy: 120, 1021
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+sbushes/jungle_two
+  rotate: false
+  xy: 64, 1053
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+tree/Tree_Jungle_Bare
+  rotate: false
+  xy: 128, 1245
+  size: 128, 160
+  orig: 128, 160
+  offset: 0, 0
+  index: -1
+extras/mushrooms
+  rotate: false
+  xy: 89, 960
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+bushes/1
+  rotate: false
+  xy: 128, 0
+  size: 27, 60
+  orig: 27, 60
+  offset: 0, 0
+  index: -1
+sbushes/jungle
+  rotate: false
+  xy: 213, 1021
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+flowers/4
+  rotate: false
+  xy: 205, 960
+  size: 30, 28
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
+sbushes/mild_four
+  rotate: false
+  xy: 126, 1053
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+rocks/3
+  rotate: false
+  xy: 152, 1021
+  size: 29, 30
+  orig: 29, 30
+  offset: 0, 0
+  index: -1
