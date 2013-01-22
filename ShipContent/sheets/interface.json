@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "Button.png",
+	"frame": {"x":2,"y":719,"w":261,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":261,"h":84},
+	"sourceSize": {"w":261,"h":84}
+},
+{
+	"filename": "ExperienceBar.png",
+	"frame": {"x":2,"y":595,"w":565,"h":7},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":565,"h":7},
+	"sourceSize": {"w":565,"h":7}
+},
+{
+	"filename": "ExperienceMeter.png",
+	"frame": {"x":2,"y":584,"w":569,"h":11},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":11},
+	"sourceSize": {"w":569,"h":11}
+},
+{
+	"filename": "HudDisplay.png",
+	"frame": {"x":2,"y":2,"w":781,"h":582},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":781,"h":582},
+	"sourceSize": {"w":781,"h":582}
+},
+{
+	"filename": "Intro.png",
+	"frame": {"x":2,"y":602,"w":475,"h":117},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":475,"h":117},
+	"sourceSize": {"w":475,"h":117}
+},
+{
+	"filename": "Inventory.png",
+	"frame": {"x":571,"y":584,"w":419,"h":481},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":419,"h":481},
+	"sourceSize": {"w":419,"h":481}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "interface.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:93d090db861b30be55ffc63007a7d637$"
+}
+}

@@ -1,0 +1,124 @@
+{"frames": [
+
+{
+	"filename": "Exit.png",
+	"frame": {"x":263,"y":971,"w":261,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":261,"h":84},
+	"sourceSize": {"w":261,"h":84}
+},
+{
+	"filename": "ExitOver.png",
+	"frame": {"x":2,"y":971,"w":261,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":261,"h":84},
+	"sourceSize": {"w":261,"h":84}
+},
+{
+	"filename": "ExperienceBar.png",
+	"frame": {"x":2,"y":595,"w":565,"h":7},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":565,"h":7},
+	"sourceSize": {"w":565,"h":7}
+},
+{
+	"filename": "ExperienceMeter.png",
+	"frame": {"x":2,"y":584,"w":569,"h":11},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":569,"h":11},
+	"sourceSize": {"w":569,"h":11}
+},
+{
+	"filename": "HudDisplay.png",
+	"frame": {"x":2,"y":2,"w":781,"h":582},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":781,"h":582},
+	"sourceSize": {"w":781,"h":582}
+},
+{
+	"filename": "Intro.png",
+	"frame": {"x":2,"y":602,"w":475,"h":117},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":475,"h":117},
+	"sourceSize": {"w":475,"h":117}
+},
+{
+	"filename": "Inventory.png",
+	"frame": {"x":571,"y":584,"w":419,"h":481},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":419,"h":481},
+	"sourceSize": {"w":419,"h":481}
+},
+{
+	"filename": "LoadGame.png",
+	"frame": {"x":263,"y":887,"w":261,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":261,"h":84},
+	"sourceSize": {"w":261,"h":84}
+},
+{
+	"filename": "LoadGameDisabled.png",
+	"frame": {"x":783,"y":2,"w":229,"h":52},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":16,"y":16,"w":229,"h":52},
+	"sourceSize": {"w":229,"h":52}
+},
+{
+	"filename": "LoadGameOver.png",
+	"frame": {"x":2,"y":887,"w":261,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":261,"h":84},
+	"sourceSize": {"w":261,"h":84}
+},
+{
+	"filename": "NewGame.png",
+	"frame": {"x":263,"y":803,"w":261,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":261,"h":84},
+	"sourceSize": {"w":261,"h":84}
+},
+{
+	"filename": "NewGameOver.png",
+	"frame": {"x":2,"y":803,"w":261,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":261,"h":84},
+	"sourceSize": {"w":261,"h":84}
+},
+{
+	"filename": "Settings.png",
+	"frame": {"x":263,"y":719,"w":261,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":261,"h":84},
+	"sourceSize": {"w":261,"h":84}
+},
+{
+	"filename": "SettingsOver.png",
+	"frame": {"x":2,"y":719,"w":261,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":261,"h":84},
+	"sourceSize": {"w":261,"h":84}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "interface.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8d5c9a94b160fb78d3b4ff9b77912fb8$"
+}
+}

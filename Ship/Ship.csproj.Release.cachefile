@@ -1,5 +1,12 @@
-Content\decorations.xnb
-Content\Tile_Defaulted.xnb
-Content\grass.xnb
-Content\decorationsJSON.xnb
-Content\FPSFont.xnb
+Content\sheets\decorations.xnb
+Content\sheets\characters.xnb
+Content\sheets\interface.xnb
+Content\sheets\decorationsJSON.xnb
+Content\sheets\charactersJSON.xnb
+Content\sheets\interfaceJSON.xnb
+Content\fonts\FPSFont.xnb
+Content\sounds\wood2.xnb
+Content\sounds\wood0.xnb
+Content\sounds\wood1.xnb
+Content\sounds\itempickup.xnb
+Content\sounds\treeexplode.xnb

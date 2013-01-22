@@ -73,6 +73,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Lidgren.Network">
+      <HintPath>dlls\Lidgren.Network.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -125,53 +128,74 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\Beans\Constants\AreaConstants.cs" />
-    <Compile Include="Game\Beans\Events\MoveArgs.cs" />
-    <Compile Include="Game\Beans\Managers\LoaderBaseManager.cs" />
-    <Compile Include="Game\Beans\Managers\Managers.cs" />
-    <Compile Include="Game\Beans\Managers\TileSpanManager.cs" />
-    <Compile Include="Game\Beans\Mortals\Decoration.cs" />
-    <Compile Include="Game\Beans\Tiles\MiniTileCollection.cs" />
-    <Compile Include="Game\Beans\Managers\DecorManager.cs" />
-    <Compile Include="Game\Beans\Tiles\TileCollection.cs" />
-    <Compile Include="Game\Loaders\SectorData.cs" />
-    <Compile Include="Game\TestBox.cs" />
-    <Compile Include="Game\Utils\BezierCurve.cs" />
-    <Compile Include="Game\Beans\Mortals\Keys\DecorKeys.cs" />
-    <Compile Include="Game\Utils\GameLayer.cs" />
-    <Compile Include="Game\Beans\Mortals\Keys\TileKeys.cs" />
-    <Compile Include="Game\Utils\Seeds.cs">
+    <Compile Include="Game\Play\Beans\Animations\CharacterAnim.cs" />
+    <Compile Include="Game\Play\Beans\Animations\DestroyTreeAnim.cs" />
+    <Compile Include="Game\Play\Beans\Animations\LootDropAnim.cs" />
+    <Compile Include="Game\Play\Beans\Helpers\InterfaceHelper.cs" />
+    <Compile Include="Game\Play\Beans\Mortals\Animate\Extras\Inventory.cs" />
+    <Compile Include="Game\Play\Beans\Mortals\Animate\Hero.cs" />
+    <Compile Include="Game\Play\Beans\Constants\AreaConstants.cs" />
+    <Compile Include="Game\Play\Beans\Constants\ActionConstants.cs" />
+    <Compile Include="Game\Play\Beans\Constants\MoveConstants.cs" />
+    <Compile Include="Game\Play\Beans\Items\ItemPool.cs" />
+    <Compile Include="Game\Play\Beans\Items\WorldItemKey.cs" />
+    <Compile Include="Game\Play\Beans\Items\WorldItem.cs" />
+    <Compile Include="Game\Play\Beans\Managers\CharacterManager.cs" />
+    <Compile Include="Game\Play\Beans\Managers\InterfaceManager.cs" />
+    <Compile Include="Game\Play\Beans\Managers\LoaderBaseManager.cs" />
+    <Compile Include="Game\Play\Beans\Managers\Manager.cs" />
+    <Compile Include="Game\Play\Beans\Managers\Message.cs" />
+    <Compile Include="Game\Play\Beans\Managers\MessageManager.cs" />
+    <Compile Include="Game\Play\Beans\Mortals\Inanimate\Decoration.cs" />
+    <Compile Include="Game\Play\Beans\Sounds\BasicSound.cs" />
+    <Compile Include="Game\Play\Beans\Sounds\DecorationSound.cs" />
+    <Compile Include="Game\Play\Beans\Tiles\MiniFogCollection.cs" />
+    <Compile Include="Game\Play\Beans\Tiles\TextureProperties.cs" />
+    <Compile Include="Game\Play\Beans\Tiles\MiniTileCollection.cs" />
+    <Compile Include="Game\Play\Beans\Managers\DecorManager.cs" />
+    <Compile Include="Game\Play\Beans\Tiles\TileCollection.cs" />
+    <Compile Include="Game\Play\Loaders\SectorData.cs" />
+    <Compile Include="Game\ScreenComponents\GameScreenManager.cs" />
+    <Compile Include="Game\ScreenComponents\GameScreen.cs" />
+    <Compile Include="Game\ScreenComponents\Screens\PlayScreen.cs" />
+    <Compile Include="Game\ScreenComponents\Screens\WelcomeScreen.cs" />
+    <Compile Include="Game\Play\TestBox.cs" />
+    <Compile Include="Game\Play\Utils\BezierCurve.cs" />
+    <Compile Include="Game\Play\Beans\Helpers\DecorHelper.cs" />
+    <Compile Include="Game\Play\Beans\Helpers\TileHelper.cs" />
+    <Compile Include="Game\Play\Utils\Inputs.cs" />
+    <Compile Include="Game\Play\Utils\Seeds.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Game\Beans\Managers\MiniTileManager.cs" />
-    <Compile Include="Game\WorldGeneration\CreateWorld.cs">
+    <Compile Include="Game\Play\Beans\Managers\MiniTileManager.cs" />
+    <Compile Include="Game\Play\WorldGeneration\CreateWorld.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Game\WorldGeneration\CreateWorldTerrain.cs" />
-    <Compile Include="Game\WorldGeneration\MapBase.cs">
+    <Compile Include="Game\Play\WorldGeneration\MapBase.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Game\WorldGeneration\WorldDrawing\WaterSource.cs" />
-    <Compile Include="Game\WorldGeneration\WorldData.cs" />
-    <Compile Include="Game\Loaders\LoaderBase.cs" />
-    <Compile Include="Game\Beans\Constants\WorldConstants.cs" />
-    <Compile Include="Game\WorldGeneration\Noise\NoiseGen.cs" />
-    <Compile Include="Game\WorldGeneration\Noise\SimplexNoise.cs" />
-    <Compile Include="Game\Beans\Managers\TileManager.cs" />
-    <Compile Include="Game\Utils\Camera2D.cs" />
-    <Compile Include="Game\Utils\Utility.cs" />
-    <Compile Include="Game\WorldGeneration\TerrainColors.cs" />
-    <Compile Include="Game\WorldGeneration\WorldDrawing\DesertGenerator.cs" />
-    <Compile Include="Game\WorldGeneration\WorldDrawing\ForestGenerator.cs" />
-    <Compile Include="Game\WorldGeneration\WorldDrawing\GrassGenerator.cs" />
-    <Compile Include="Game\WorldGeneration\WorldDrawing\HeightGenerator.cs" />
-    <Compile Include="Game\WorldGeneration\WorldDrawing\MapGenerator.cs" />
-    <Compile Include="Game\WorldGeneration\WorldDrawing\RiverCoord.cs" />
-    <Compile Include="Game\WorldGeneration\WorldDrawing\TemperatureGenerator.cs" />
-    <Compile Include="Game\WorldGeneration\WorldDrawing\WaterGenerator.cs" />
-    <Compile Include="Game\WorldGeneration\WorldDrawing\WaterSquare.cs">
+    <Compile Include="Game\Play\WorldGeneration\WorldDrawing\FogWar.cs" />
+    <Compile Include="Game\Play\WorldGeneration\WorldDrawing\WaterSource.cs" />
+    <Compile Include="Game\Play\WorldGeneration\WorldData.cs" />
+    <Compile Include="Game\Play\Loaders\LoaderBase.cs" />
+    <Compile Include="Game\Play\Beans\Constants\WorldConstants.cs" />
+    <Compile Include="Game\Play\WorldGeneration\Noise\NoiseGen.cs" />
+    <Compile Include="Game\Play\WorldGeneration\Noise\SimplexNoise.cs" />
+    <Compile Include="Game\Play\Beans\Managers\TileManager.cs" />
+    <Compile Include="Game\Play\Utils\Camera2D.cs" />
+    <Compile Include="Game\Play\Utils\Utility.cs" />
+    <Compile Include="Game\Play\WorldGeneration\TerrainColors.cs" />
+    <Compile Include="Game\Play\WorldGeneration\WorldDrawing\DesertGenerator.cs" />
+    <Compile Include="Game\Play\WorldGeneration\WorldDrawing\ForestGenerator.cs" />
+    <Compile Include="Game\Play\WorldGeneration\WorldDrawing\GrassGenerator.cs" />
+    <Compile Include="Game\Play\WorldGeneration\WorldDrawing\HeightGenerator.cs" />
+    <Compile Include="Game\Play\WorldGeneration\WorldDrawing\MapGenerator.cs" />
+    <Compile Include="Game\Play\WorldGeneration\WorldDrawing\RiverCoord.cs" />
+    <Compile Include="Game\Play\WorldGeneration\WorldDrawing\WaterGenerator.cs" />
+    <Compile Include="Game\Play\WorldGeneration\WorldDrawing\WaterSquare.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Game\Welcome\MainInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MainGame.cs" />

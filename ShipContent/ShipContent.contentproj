@@ -45,39 +45,85 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="decorations.png">
+    <Compile Include="Screens\Play\Sheets\decorations.png">
       <Name>decorations</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="decorations.json">
+    <Compile Include="Screens\Play\Sheets\decorations.json">
       <Name>decorationsJSON</Name>
       <Importer>TextureAtlasImporter</Importer>
       <Processor>TextureAtlasProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FPSFont.spritefont">
+    <Compile Include="Fonts\FPSFont.spritefont">
       <Name>FPSFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tile_Defaulted.png">
-      <Name>Tile_Defaulted</Name>
+    <Compile Include="Screens\Play\Sheets\characters.png">
+      <Name>characters</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="grass.png">
-      <Name>grass</Name>
+    <Compile Include="Screens\Play\Sheets\characters.json">
+      <Name>charactersJSON</Name>
+      <Importer>TextureAtlasImporter</Importer>
+      <Processor>TextureAtlasProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Screens\Play\Sounds\wood2.mp3">
+      <Name>wood2</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Screens\Play\Sounds\wood0.mp3">
+      <Name>wood0</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Screens\Play\Sounds\wood1.mp3">
+      <Name>wood1</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Screens\Shared\interface.png">
+      <Name>interface</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Screens\Shared\interface.json">
+      <Name>interfaceJSON</Name>
+      <Importer>TextureAtlasImporter</Importer>
+      <Processor>TextureAtlasProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Screens\Play\Sounds\itempickup.mp3">
+      <Name>itempickup</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Screens\Play\Sounds\treeexplode.mp3">
+      <Name>treeexplode</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Screens\Welcome\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
