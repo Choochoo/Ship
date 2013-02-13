@@ -21,6 +21,7 @@ namespace Ship.Game.Play.Beans.Mortals.Animate.Extras
         private readonly List<WorldItem> _worldItems = new List<WorldItem>(SizeOfHeroInventory);
         private Hero _hero;
         private WorldItem itemFollowMouse;
+        private const byte maxCollectionSize = byte.MaxValue;
         public Inventory(Hero hero) { _hero = hero; }
         public List<WorldItem> WorldItems { get { return _worldItems; } }
 
@@ -28,36 +29,37 @@ namespace Ship.Game.Play.Beans.Mortals.Animate.Extras
 
         public void AddToInventory(WorldItem item)
         {
-            WorldItem currentItem = null;
+            var itemCount = item.Count;
             for (var i = 0; i < _worldItems.Count; i++)
             {
-                currentItem = _worldItems[i];
-                if (currentItem.MyType == item.MyType)
+                WorldItem currentItem = _worldItems[i];
+                if (currentItem.MyType == item.MyType && currentItem.Count != maxCollectionSize)
                 {
-                    currentItem.Count += item.Count;
-                    if (currentItem.Count == 0)
-                        currentItem.Count = 20;
-                    item.Count = 0;
+                    if (currentItem.Count + itemCount > maxCollectionSize)
+                    {
+                        var addon = (byte)(maxCollectionSize - currentItem.Count);
+                        currentItem.Count += addon;
+                    }
+                    else
+                    {
+                        currentItem.Count += itemCount;
+                        item.Count = 0;
+                    }
                     break;
                 }
+                
+                
             }
 
             if (item.Count == 0)
             {
-
-                if (currentItem != null && currentItem.Count == 0)
-                    currentItem.Count = 20;
-
                 item.InInventory = false;
             }
             else 
             {
                 item.InventoryPosition = _worldItems.Count;
+                System.Diagnostics.Debug.WriteLine("pos:"+item.InventoryPosition);
                 item.InInventory = true;
-                if (currentItem != null && currentItem.Count == 0)
-                    currentItem.Count = 20;
-                if (item != null && item.Count == 0)
-                    item.Count = 20;
                 if (item.InventoryPosition < 10)
                     _quickItems.Add(item);
                 _worldItems.Add(item);
@@ -108,7 +110,7 @@ namespace Ship.Game.Play.Beans.Mortals.Animate.Extras
                 Vector2 rectPos;
                 if (itemFollowMouse != null && itemFollowMouse == worldItem)
                     rectPos = new Vector2(Inputs.MousePointerRect.X, Inputs.MousePointerRect.Y);
-                else
+                else if (worldItem.InventoryPosition < 10)
                     rectPos = InterfaceManager.MyInterfaceManager.QuickItems[worldItem.InventoryPosition];
                 worldItem.DrawForMenu(ref rectPos);
             }

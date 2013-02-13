@@ -85,7 +85,6 @@ namespace Ship.Game.Play.Beans.Mortals.Inanimate
 
         public Rectangle HitRect { get { return _hitRect; } }
 
-
         public int CompareTo(object obj)
         {
             if (!Visible)
@@ -119,6 +118,9 @@ namespace Ship.Game.Play.Beans.Mortals.Inanimate
             _visible = type != DecorHelper.None;
             MyType = type;
             if (!_visible) return false;
+
+            _animLastUpdate = 0;
+            _lasthitPointUpdate = 500;
 
             //returns isLightSource;
 
@@ -279,7 +281,7 @@ namespace Ship.Game.Play.Beans.Mortals.Inanimate
                     _myHitpoints -= damage;
                 }
 
-                if (_myHitpoints < 0)
+                if (_myHitpoints <= 0)
                 {
                     ItemPool.MyItemPool.AddToActive(ref _itemVals, _itemTotal,
                                                     ref TileManager.TileColls[MyVectorSpotX, MyVectorSpotY]);

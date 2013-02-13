@@ -42,6 +42,7 @@ namespace Ship.Game.Play.Beans.Items
 
         internal void AddToInactive(WorldItem wic)
         {
+            System.Diagnostics.Debug.WriteLine("hit here");
             _itemCollectionsActive.Remove(wic);
             _itemCollectionsInActive.Enqueue(wic);
         }
@@ -52,13 +53,22 @@ namespace Ship.Game.Play.Beans.Items
             {
                 _itemCollectionsActive.Sort();
                 var numberToFreeUp = numberOfItemsInArray - _itemCollectionsInActive.Count;
+                numberToFreeUp = numberToFreeUp > _itemCollectionsActive.Count
+                                     ? _itemCollectionsActive.Count
+                                     : numberToFreeUp;
+
+                var actuallyRemoved = 0;
                 for (var i = 0; i < numberToFreeUp; i++)
                 {
                     var item = _itemCollectionsActive[i];
+                    if (item.InInventory) break;
+                    actuallyRemoved++;
                     _itemCollectionsInActive.Enqueue(item);
                 }
-                for (var i = 0; i < numberToFreeUp; i++)
-                    _itemCollectionsActive.RemoveAt(i);
+                for (var j = 0; j < actuallyRemoved; j++)
+                    _itemCollectionsActive.RemoveAt(j);
+
+                numberOfItemsInArray = _itemCollectionsInActive.Count+actuallyRemoved;
             }
 
             for (var i = 0; i < numberOfItemsInArray; i++)
@@ -104,7 +114,7 @@ namespace Ship.Game.Play.Beans.Items
             var newTileX = tileXPos < 0 ? tile.LeftVectorX : tileXPos > 0 ? tile.RightVectorX : tile.MyVectorSpotX;
             var newTileY = tileYPos < 0 ? tile.TopVectorY : tileYPos > 0 ? tile.BottomVectorY : tile.MyVectorSpotY;
             var newTile = TileManager.TileColls[newTileX, newTileY];
-            newTile.AddWorldItem(ref worldItem);
+            
             worldItem.SetType(ref newTile, item, newTile.HitRect.X + offsetx, newTile.HitRect.Y + offsety);
         }
 

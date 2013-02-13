@@ -18,6 +18,7 @@ using Ship.Game.Play.Beans.Helpers;
 using Ship.Game.Play.Beans.Items;
 using Ship.Game.Play.Beans.Mortals.Animate.Extras;
 using Ship.Game.ScreenComponents.Screens;
+using Ship.Game.Play.Beans.Mortals.Inanimate;
 
 #endregion
 
@@ -78,7 +79,6 @@ namespace Ship.Game.Play.Beans.Mortals.Animate
         private readonly CharacterAnim _waterRight;
         private readonly CharacterAnim _waterUp;
         private readonly DecorationSound _woodChop;
-        private readonly List<WorldItem> removeWorldItem = new List<WorldItem>();
 
 
         // end tweens
@@ -106,7 +106,7 @@ namespace Ship.Game.Play.Beans.Mortals.Animate
         // private byte _myLastMouseDirection;
         private TileCollection _myTile;
         private Vector2 _position;
-
+        private const int attackRectWH = 25;
         public Hero()
         {
             if (MyHero == null)
@@ -116,7 +116,7 @@ namespace Ship.Game.Play.Beans.Mortals.Animate
             _mainTexture = PlayScreen.CharacterTexture;
             _hitRect = new Rectangle(0, 0, 28, 25);
             _lootRect = new Rectangle(0, 0, 100, 100);
-            _attackRect = new Rectangle(0, 0, 25, 25);
+            _attackRect = new Rectangle(0, 0, attackRectWH, attackRectWH);
             _spriteBatch = PlayScreen.Spritebatch;
             _woodChop = new DecorationSound("wood", 3);
             _walkDown = new CharacterAnim(PlayScreen.CharacterAtlas, "hero", "down-walk", 1,
@@ -312,7 +312,8 @@ namespace Ship.Game.Play.Beans.Mortals.Animate
         private void LeftMouse()
         {
             CharacterAnim leftActionTween;
-
+            short damage = 10;
+            Decoration toHitDecoration;
             switch (_myLastKeyBoardDirection)
             {
                 case MoveUp:
@@ -329,7 +330,12 @@ namespace Ship.Game.Play.Beans.Mortals.Animate
                             break;
                     }
 
-                    _attackRect.Y = _hitRect.Y - 50;
+                    _attackRect.X = _hitRect.X;
+                    _attackRect.Y = _hitRect.Y-35;
+                    _attackRect.Width = attackRectWH;
+                    _attackRect.Height = 60;
+
+                    toHitDecoration = DecorManager.DecorSprites[MyTile.MyVectorSpotX, MyTile.TopVectorY];
                     break;
                 case MoveDown:
                     switch (_myEquipped)
@@ -344,34 +350,31 @@ namespace Ship.Game.Play.Beans.Mortals.Animate
                             leftActionTween = _waterDown;
                             break;
                     }
-                    _attackRect.Y = _hitRect.Y + 50;
+                    _attackRect.X = _hitRect.X;
+                    _attackRect.Y = _hitRect.Y;
+                    _attackRect.Width = attackRectWH;
+                    _attackRect.Height = 60;
+                    toHitDecoration = DecorManager.DecorSprites[MyTile.MyVectorSpotX, MyTile.BottomVectorY];
                     break;
                 case MoveLeft:
-                    short damage = 2;
+                    
                     switch (_myEquipped)
                     {
                         case EquippedAxe:
                             leftActionTween = _axeLeft;
-                            damage *= 5;
                             break;
                         case EquippedHammer:
                             leftActionTween = _hammerLeft;
                             break;
                         default:
-                            damage = 0;
                             leftActionTween = _waterLeft;
                             break;
                     }
-                    _attackRect.X = _hitRect.X - 50;
-
-                    var value = DecorManager.DecorSprites[MyTile.LeftVectorX, MyTile.MyVectorSpotY];
-                    if (value != null && value.Visible && value.MyType == DecorHelper.Tree &&
-                        _attackRect.Intersects(value.HitRect))
-                    {
-                        value.IsHit(damage);
-                        _woodChop.Play();
-                    }
-
+                    _attackRect.X = _hitRect.X-35;
+                    _attackRect.Y = _hitRect.Y;
+                    _attackRect.Width = 60;
+                    _attackRect.Height = attackRectWH;
+                    toHitDecoration = DecorManager.DecorSprites[MyTile.LeftVectorX, MyTile.MyVectorSpotY];
                     break;
                 default:
                     switch (_myEquipped)
@@ -386,16 +389,40 @@ namespace Ship.Game.Play.Beans.Mortals.Animate
                             leftActionTween = _waterRight;
                             break;
                     }
-                    _attackRect.X = _hitRect.X + 50;
-                    _attackRect.X = _hitRect.X + 50;
+                    _attackRect.X = _hitRect.X;
+                    _attackRect.Y = _hitRect.Y;
+                    _attackRect.Width = 60;
+                    _attackRect.Height = attackRectWH;
+                    toHitDecoration = DecorManager.DecorSprites[MyTile.RightVectorX, MyTile.MyVectorSpotY];
                     break;
             }
+
+            if(!CanDamage(ref DecorManager.DecorSprites[MyTile.MyVectorSpotX, MyTile.MyVectorSpotY],damage))
+                CanDamage(ref toHitDecoration, damage);
+            
+
             var bounds = leftActionTween.GetFrame(_isMoving).Bounds;
             var offset = leftActionTween.GetOffset();
+            
             _spriteBatch.Draw(_mainTexture, _position + offset, bounds, _drawColor);
+            _spriteBatch.Draw(PlayScreen.ErrorBox,_attackRect, _drawColor);
 
             if (leftActionTween.CurrentFrame == leftActionTween.DefaultFrame)
                 _spriteBatch.Draw(_mainTexture, _position + offset, bounds, _drawColor);
+        }
+
+        private bool CanDamage(ref Decoration toHitDecoration, short damage)
+        {
+            if (toHitDecoration == null)return false;
+            if (!toHitDecoration.Visible) return false;
+
+            if(toHitDecoration.MyType == DecorHelper.Tree && _attackRect.Intersects(toHitDecoration.HitRect))
+            {
+                toHitDecoration.IsHit(damage);
+                _woodChop.Play();
+                return true;
+            }
+            return false;
         }
 
 
@@ -445,12 +472,6 @@ namespace Ship.Game.Play.Beans.Mortals.Animate
                 wi.Loot(this);
             }
 
-            while (removeWorldItem.Count != 0)
-            {
-                var wi = removeWorldItem.ElementAt(0);
-                tileCollection.RemoveWorldItem(ref wi);
-                removeWorldItem.RemoveAt(0);
-            }
         }
 
         public void CheckMyTile()
@@ -465,8 +486,7 @@ namespace Ship.Game.Play.Beans.Mortals.Animate
 
             IsClosestRect(ref TileManager.TileColls[MyTile.LeftVectorX, MyTile.MyVectorSpotY], ref smallestDifference);
             IsClosestRect(ref TileManager.TileColls[MyTile.RightVectorX, MyTile.MyVectorSpotY], ref smallestDifference);
-            IsClosestRect(ref TileManager.TileColls[MyTile.MyVectorSpotX, MyTile.BottomVectorY],
-                          ref smallestDifference);
+            IsClosestRect(ref TileManager.TileColls[MyTile.MyVectorSpotX, MyTile.BottomVectorY],ref smallestDifference);
             IsClosestRect(ref TileManager.TileColls[MyTile.MyVectorSpotX, MyTile.TopVectorY], ref smallestDifference);
 
             IsClosestRect(ref TileManager.TileColls[MyTile.LeftVectorX, MyTile.TopVectorY], ref smallestDifference);
@@ -477,25 +497,24 @@ namespace Ship.Game.Play.Beans.Mortals.Animate
 
         private void IsClosestRect(ref TileCollection testColl, ref int smallestDifference)
         {
-            if (testColl.HitRect.Intersects(HitRect))
+            if (!testColl.HitRect.Intersects(HitRect)) return;
+
+            var newestX = testColl.HitRect.Center.X - HitRect.Center.X;
+            newestX = newestX < 0 ? -newestX : newestX;
+
+            var newestY = testColl.HitRect.Center.Y - HitRect.Center.Y;
+            newestY = newestY < 0 ? -newestY : newestY;
+
+            if (smallestDifference > newestX + newestY)
             {
-                var newestX = testColl.HitRect.Center.X - HitRect.Center.X;
-                newestX = newestX < 0 ? -newestX : newestX;
-
-                var newestY = testColl.HitRect.Center.Y - HitRect.Center.Y;
-                newestY = newestY < 0 ? -newestY : newestY;
-
-                if (smallestDifference > newestX + newestY)
-                {
-                    smallestDifference = newestX + newestY;
+                smallestDifference = newestX + newestY;
 #if DEBUG
-                    MyTile.ShowHitBox = false;
+                MyTile.ShowHitBox = false;
 #endif
-                    _myTile = testColl;
+                _myTile = testColl;
 #if DEBUG
-                    MyTile.ShowHitBox = true;
+                MyTile.ShowHitBox = true;
 #endif
-                }
             }
         }
     }

@@ -19,6 +19,7 @@ namespace Ship.Game.Play.Beans.Animations
         private const float ThirdAnimationTime = 900.0f;
         private const float FourthAnimationTime = 1500.0f;
         private Vector2 _position;
+        private Vector2 _renderPosition;
         private float _scale = 1f;
         private float _timeSinceAnimationStarted;
 
@@ -28,11 +29,14 @@ namespace Ship.Game.Play.Beans.Animations
 
         public Vector2 Position { get { return _position; } }
 
+        public Vector2 RenderPosition { get { return _renderPosition; } }
+
         internal void UpdatePositions(float positionX, float positionY)
         {
             _timeSinceAnimationStarted = 0;
             _position.X = positionX;
             _position.Y = positionY;
+            _renderPosition = _position;
             _scale = 1f;
         }
 
@@ -40,8 +44,7 @@ namespace Ship.Game.Play.Beans.Animations
         {
             _timeSinceAnimationStarted += PlayScreen.OfficialGametime.ElapsedGameTime.Milliseconds;
             _position = Position + offset;
-            hitbox.X = (int) Position.X;
-            hitbox.Y = (int) Position.Y;
+            _renderPosition = _position;
             if (_timeSinceAnimationStarted <= FirstAnimationTime)
             {
                 var scaleMod = ((_timeSinceAnimationStarted/FirstAnimationTime)*1f);
@@ -55,6 +58,12 @@ namespace Ship.Game.Play.Beans.Animations
                 _scale = .85f + ((_timeSinceAnimationStarted/FourthAnimationTime)*.15f);
             else
                 _timeSinceAnimationStarted = SecondAnimationTime;
+
+            var modScale = (1.0f - _scale);
+            _renderPosition.X += modScale * hitbox.Width;
+            _renderPosition.Y += modScale * hitbox.Height;
+            hitbox.X = (int)Position.X;
+            hitbox.Y = (int)Position.Y;
         }
     }
 }

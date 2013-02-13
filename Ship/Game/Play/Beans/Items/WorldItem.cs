@@ -72,13 +72,13 @@ namespace Ship.Game.Play.Beans.Items
 
         public void SetType(ref TileCollection myTile, byte type, float positionX, float positionY)
         {
-            _myTile = myTile;
             MyType = type;
             Count = 1;
             _myRegion = WorldItemKey.ItemRegions[type];
             _hitRect.Width = _myRegion.Bounds.Width;
             _hitRect.Height = _myRegion.Bounds.Height;
             PutOnGround(positionX, positionY);
+            SetTile(ref myTile);
         }
 
         public void PutOnGround(float positionX, float positionY)
@@ -144,7 +144,7 @@ namespace Ship.Game.Play.Beans.Items
         {
             if (_active && !_forceQuit)
             {
-                PlayScreen.Spritebatch.Draw(PlayScreen.DecorationTexture, _tween.Position, _myRegion.Bounds, Color.White,
+                PlayScreen.Spritebatch.Draw(PlayScreen.DecorationTexture, _tween.RenderPosition, _myRegion.Bounds, Color.White,
                                             0f, Vector2.Zero, _tween.Scale, SpriteEffects.None, 0f);
                 if(Count > 1)
                 PlayScreen.Spritebatch.DrawString(MainGame.FpsFont, Count.ToString(), _tween.Position, Color.White);
@@ -160,6 +160,7 @@ namespace Ship.Game.Play.Beans.Items
         private void Pickup()
         {
             _pickupSound.Play();
+            _myTile.RemoveWorldItem(this);
             _gotoHero.MyInventory.AddToInventory(this);
             //!!it does remove this from tile in hero!!//
             if (!InInventory)
@@ -169,11 +170,13 @@ namespace Ship.Game.Play.Beans.Items
                 _forceQuit = true;
                 _active = false;
             }
+            
         }
 
         internal void Retire()
         {
             Count = 0;
+
             _forceQuit = true;
             _active = false;
             _pool.AddToInactive(this);
@@ -188,8 +191,7 @@ namespace Ship.Game.Play.Beans.Items
         internal void SetTile(ref TileCollection startTile)
         {
             _myTile = startTile;
-            var me = this;
-            _myTile.AddWorldItem(ref me, true);
+            _myTile.AddWorldItem(this, true);
         }
     }
 }

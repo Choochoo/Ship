@@ -48,7 +48,7 @@ namespace Ship.Game.Play.Beans.Tiles
                                      TileManager.Sprite2XWidth - 14, TileManager.Sprite2XWidth - 12);
         }
 
-        public void AddWorldItem(ref WorldItem wi, bool goBlue = false)
+        public void AddWorldItem(WorldItem wi, bool goBlue = false)
         {
             ItemsOnTile.Add(wi);
 #if DEBUG
@@ -110,7 +110,7 @@ namespace Ship.Game.Play.Beans.Tiles
 
         internal void DrawHitBox()
         {
-            if (ShowHitBox)
+            if (_itemsOnTile.Count > 0)
                 PlayScreen.Spritebatch.Draw(PlayScreen.ErrorBox, _hitRect, _drawHitBoxColor);
         }
 #endif
@@ -162,6 +162,6 @@ namespace Ship.Game.Play.Beans.Tiles
             _bottomRight = p[3];
         }
 
-        internal void RemoveWorldItem(ref WorldItem worldItem) { _itemsOnTile.Remove(worldItem); }
+        internal void RemoveWorldItem(WorldItem worldItem) { _itemsOnTile.Remove(worldItem); }
     }
 }

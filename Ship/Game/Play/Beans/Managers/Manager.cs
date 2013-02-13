@@ -45,7 +45,7 @@ namespace Ship.Game.Play.Beans.Managers
             _interfaceManager = new InterfaceManager();
             _messageManager = new MessageManager();
             _loaderBaseManager = new LoaderBaseManager();
-            _itemPool = new ItemPool(20);
+            _itemPool = new ItemPool(10);
 
             //load data
             _tileManager.LoadData(ref _loaderBaseManager.Loaders);
